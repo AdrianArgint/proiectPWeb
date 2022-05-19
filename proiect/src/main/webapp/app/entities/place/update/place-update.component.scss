@@ -12,3 +12,11 @@
 .example-full-width {
   width: 100%;
 }
+
+mat-form-field {
+    border: 0 !important;
+}
+
+::ng-deep .mat-form-field-label {
+  padding-left: 10px
+}

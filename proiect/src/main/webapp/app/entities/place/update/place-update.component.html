@@ -1,7 +1,8 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-place-heading" data-cy="PlaceCreateUpdateHeading">Create or edit a Place</h2>
+      <h2 id="jhi-place-heading" data-cy="PlaceCreateUpdateHeading" *ngIf="this.editForm.get(['addressForm'])!.value">Edit a Place</h2>
+      <h2 id="jhi-place-heading" data-cy="PlaceCreateUpdateHeading" *ngIf="!this.editForm.get(['addressForm'])!.value">Create a Place</h2>
 
       <div>
         <jhi-alert-error></jhi-alert-error>

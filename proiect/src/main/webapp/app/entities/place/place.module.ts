@@ -38,5 +38,8 @@ import { MatButtonModule } from '@angular/material/button';
     OverviewDialogComponent,
   ],
   entryComponents: [PlaceDeleteDialogComponent],
+  exports: [
+    PlacesMapComponent
+  ]
 })
 export class PlaceModule {}

@@ -1,4 +1,4 @@
-<div class="container">
+<div>
   <h4>The following map represents all types of places.</h4>
   <div class="d-flex flex-column">
     <div>
@@ -11,7 +11,7 @@
       <span style="color: red">Red</span> <span> markers are for <b>Danger zones</b>.</span>
     </div>
   </div>
-  <div *ngIf="latitude && longitude && zoom && places">
+  <div *ngIf="latitude && longitude && zoom && places" >
     <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
       <div *ngFor="let place of places">
         <agm-marker [latitude]="place!.latitude!" [longitude]="place!.longitude!" [iconUrl]="getIconUrl(place)">

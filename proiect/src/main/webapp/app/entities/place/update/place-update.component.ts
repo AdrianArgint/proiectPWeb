@@ -52,15 +52,12 @@ export class PlaceUpdateComponent implements OnInit {
   }
 
   onAddressChange($event: any): void {
-    console.log($event);
     this.editForm.patchValue({
       address: $event.name,
       latitude: $event.geometry.location.lat(),
       longitude: $event.geometry.location.lng(),
       addressForm: $event,
     });
-    console.log($event.name);
-    console.log(this.editForm.get(['address'])!.value);
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPlace>>): void {
@@ -93,8 +90,6 @@ export class PlaceUpdateComponent implements OnInit {
       description: place.description,
       addressForm: place.address,
     });
-    console.log(this.editForm.get(['address'])!.value);
-    console.log(this.editForm.get(['addressForm'])!.value);
 
     this.placeTypeForm = this.editForm.get(['type'])!.value;
   }

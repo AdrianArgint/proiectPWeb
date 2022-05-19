@@ -31,8 +31,8 @@ export class PlaceDetailComponent implements OnInit {
   }
 
   getCheckedInPeopleList(): string {
-    if (!this.checkInPeople) {
-      return '';
+    if (!this.checkInPeople || this.checkInPeople.length === 0) {
+      return ' No one checked-in yet';
     }
     return this.checkInPeople
       .map(person => {

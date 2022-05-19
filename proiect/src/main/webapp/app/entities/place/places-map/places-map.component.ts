@@ -35,12 +35,8 @@ export class PlacesMapComponent implements OnInit {
   }
 
   private setCurrentLocation(): void {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+        this.latitude =  44.439663;
+        this.longitude = 26.096306;
         this.zoom = 10;
-      });
-    }
   }
 }

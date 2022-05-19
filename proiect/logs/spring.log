@@ -101,3 +101,191 @@
 	Profile(s): 	[prod, api-docs]
 ----------------------------------------------------------
 2022-05-19 20:47:57.225  WARN 1 --- [XNIO-1 task-1] o.z.problem.spring.common.AdviceTraits   : Unauthorized: Full authentication is required to access this resource
+2022-05-19 21:04:42.446  INFO 1 --- [main] com.proiect.app.ProiectApp               : The following 2 profiles are active: "prod", "api-docs"
+2022-05-19 21:04:45.603  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application configuration, using profiles: prod
+2022-05-19 21:04:45.605  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application fully configured
+2022-05-19 21:04:48.998 ERROR 1 --- [main] com.zaxxer.hikari.pool.HikariPool        : Hikari - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: Connection to host.docker.internal:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:319)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+	at org.postgresql.Driver.makeConnection(Driver.java:400)
+	at org.postgresql.Driver.connect(Driver.java:259)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:266)
+	at org.springframework.boot.autoconfigure.liquibase.DataSourceClosingSpringLiquibase.afterPropertiesSet(DataSourceClosingSpringLiquibase.java:46)
+	at tech.jhipster.config.liquibase.AsyncSpringLiquibase.initDb(AsyncSpringLiquibase.java:118)
+	at tech.jhipster.config.liquibase.AsyncSpringLiquibase.afterPropertiesSet(AsyncSpringLiquibase.java:103)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at com.proiect.app.ProiectApp.main(ProiectApp.java:71)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.base/java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.base/java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.base/java.net.Socket.connect(Unknown Source)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+	... 33 common frames omitted
+
+2022-05-19 21:04:49.000  WARN 1 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [com/proiect/app/config/LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Connection to host.docker.internal:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2022-05-19 21:04:49.044 ERROR 1 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [com/proiect/app/config/LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Connection to host.docker.internal:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at com.proiect.app.ProiectApp.main(ProiectApp.java:71)
+Caused by: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Connection to host.docker.internal:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:271)
+	at org.springframework.boot.autoconfigure.liquibase.DataSourceClosingSpringLiquibase.afterPropertiesSet(DataSourceClosingSpringLiquibase.java:46)
+	at tech.jhipster.config.liquibase.AsyncSpringLiquibase.initDb(AsyncSpringLiquibase.java:118)
+	at tech.jhipster.config.liquibase.AsyncSpringLiquibase.afterPropertiesSet(AsyncSpringLiquibase.java:103)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 16 common frames omitted
+Caused by: org.postgresql.util.PSQLException: Connection to host.docker.internal:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:319)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+	at org.postgresql.Driver.makeConnection(Driver.java:400)
+	at org.postgresql.Driver.connect(Driver.java:259)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:266)
+	... 21 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.base/java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.base/java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.base/java.net.Socket.connect(Unknown Source)
+	at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+	at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+	... 33 common frames omitted
+
+2022-05-19 21:05:04.953  INFO 1 --- [main] com.proiect.app.ProiectApp               : The following 2 profiles are active: "prod", "api-docs"
+2022-05-19 21:05:08.866  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application configuration, using profiles: prod
+2022-05-19 21:05:08.868  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application fully configured
+2022-05-19 21:05:11.229  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.User] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:11.329  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Place] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:11.336  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.User.authorities] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:11.341  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Alert] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:11.346  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Authority] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:11.350  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Post] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:11.355  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.PostComment] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:05:13.454  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:05:13.455  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/app/**/*.{js,html}']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:05:13.456  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/i18n/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:05:13.457  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/content/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:05:13.457  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:05:13.458  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/test/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:05:14.280  INFO 1 --- [main] org.jboss.threads                        : JBoss Threads version 3.1.0.Final
+2022-05-19 21:05:14.331  INFO 1 --- [main] com.proiect.app.ProiectApp               : Started ProiectApp in 10.532 seconds (JVM running for 11.071)
+2022-05-19 21:05:14.337  INFO 1 --- [main] com.proiect.app.ProiectApp               : 
+----------------------------------------------------------
+	Application 'proiect' is running! Access URLs:
+	Local: 		http://localhost:8080/
+	External: 	http://172.24.0.6:8080/
+	Profile(s): 	[prod, api-docs]
+----------------------------------------------------------
+2022-05-19 21:05:28.198  WARN 1 --- [XNIO-1 task-1] o.z.problem.spring.common.AdviceTraits   : Unauthorized: Full authentication is required to access this resource
+2022-05-19 21:09:18.490  INFO 1 --- [main] com.proiect.app.ProiectApp               : The following 2 profiles are active: "prod", "api-docs"
+2022-05-19 21:09:22.444  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application configuration, using profiles: prod
+2022-05-19 21:09:22.446  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application fully configured
+2022-05-19 21:09:24.556  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Alert] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:24.647  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.User.authorities] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:24.653  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Authority] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:24.657  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.User] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:24.661  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Post] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:24.665  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Place] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:24.670  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.PostComment] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:09:26.956  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:09:26.957  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/app/**/*.{js,html}']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:09:26.957  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/i18n/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:09:26.958  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/content/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:09:26.958  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:09:26.959  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/test/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:09:27.786  INFO 1 --- [main] org.jboss.threads                        : JBoss Threads version 3.1.0.Final
+2022-05-19 21:09:27.841  INFO 1 --- [main] com.proiect.app.ProiectApp               : Started ProiectApp in 10.378 seconds (JVM running for 11.031)
+2022-05-19 21:09:27.847  INFO 1 --- [main] com.proiect.app.ProiectApp               : 
+----------------------------------------------------------
+	Application 'proiect' is running! Access URLs:
+	Local: 		http://localhost:8080/
+	External: 	http://172.25.0.8:8080/
+	Profile(s): 	[prod, api-docs]
+----------------------------------------------------------
+2022-05-19 21:09:47.293  WARN 1 --- [XNIO-1 task-1] o.z.problem.spring.common.AdviceTraits   : Unauthorized: Full authentication is required to access this resource
+2022-05-19 21:20:58.926  INFO 1 --- [main] com.proiect.app.ProiectApp               : The following 2 profiles are active: "prod", "api-docs"
+2022-05-19 21:21:03.889  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application configuration, using profiles: prod
+2022-05-19 21:21:03.908  INFO 1 --- [main] com.proiect.app.config.WebConfigurer     : Web application fully configured
+2022-05-19 21:21:06.793  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.PostComment] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:06.910  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.User.authorities] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:06.917  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Post] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:06.922  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.User] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:06.926  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Place] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:06.931  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Alert] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:06.936  WARN 1 --- [main] org.hibernate.orm.cache                  : HHH90001006: Missing cache[com.proiect.app.domain.Authority] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2022-05-19 21:21:10.080  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:21:10.082  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/app/**/*.{js,html}']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:21:10.083  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/i18n/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:21:10.084  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/content/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:21:10.084  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/swagger-ui/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:21:10.085  WARN 1 --- [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/test/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-05-19 21:21:11.157  INFO 1 --- [main] org.jboss.threads                        : JBoss Threads version 3.1.0.Final
+2022-05-19 21:21:11.222  INFO 1 --- [main] com.proiect.app.ProiectApp               : Started ProiectApp in 13.63 seconds (JVM running for 14.323)
+2022-05-19 21:21:11.228  INFO 1 --- [main] com.proiect.app.ProiectApp               : 
+----------------------------------------------------------
+	Application 'proiect' is running! Access URLs:
+	Local: 		http://localhost:8080/
+	External: 	http://172.26.0.9:8080/
+	Profile(s): 	[prod, api-docs]
+----------------------------------------------------------
+2022-05-19 21:21:14.032  WARN 1 --- [XNIO-1 task-1] o.z.problem.spring.common.AdviceTraits   : Unauthorized: Full authentication is required to access this resource

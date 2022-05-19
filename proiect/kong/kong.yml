@@ -1,0 +1,15 @@
+_format_version: "2.1"
+
+services:
+  - name: get-posts
+    url: http://host.docker.internal:8080/api/posts
+    routes:
+      - name: posts
+        paths:
+          - /posts
+  - name: login
+    url: http://host.docker.internal:8080/api/authenticate
+    routes:
+      - name: login
+        paths:
+          - /login

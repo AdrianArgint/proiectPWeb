@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Please confirm</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to check-in this place?</p>
+  <p *ngIf="data.bool">You already check-in other place. You will change your location if you confirm below.</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Yes</button>
+</div>

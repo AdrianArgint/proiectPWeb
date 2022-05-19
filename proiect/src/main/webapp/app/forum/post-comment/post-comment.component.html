@@ -1,0 +1,21 @@
+<div
+  *ngIf="comment && comment.author"
+  class="rounded"
+  style="margin: 3px; padding: 2px"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+>
+  <div>
+    <span>
+      <img [src]="comment.author.imageUrl" class="profile-image rounded-circle" style="width: 25px; height: 25px" alt="Avatar" /> •
+      {{ comment.author.firstName }} {{ comment.author.lastName }} •
+      {{ comment.createdDate }}
+    </span>
+    <div>{{ comment.content! }}</div>
+  </div>
+  <div *ngIf="loggedUser && loggedUser.id === comment.author.id">
+    <button mat-stroked-button color="accent" (click)="sendIdToParent()">
+      <fa-icon icon="times"></fa-icon>
+    </button>
+  </div>
+</div>

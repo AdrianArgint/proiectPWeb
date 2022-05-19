@@ -1,0 +1,32 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" style="background-color: #dae0e6">
+  <h1>Forum page</h1>
+  <button mat-raised-button style="margin: 5px" color="primary" (click)="openCreatePost()">Create post</button>
+</div>
+<div fxLayout="column" fxLayoutAlign="space-around center" style="background-color: #dae0e6">
+  <div style="width: 50%">
+    <mat-card *ngIf="loggedUser && isOpened" class="mat-elevation-z4" style="margin: 8px; padding: 4px">
+      <mat-card-title>
+        <span>
+          <img [src]="loggedUser.imageUrl" class="profile-image rounded-circle" style="width: 25px; height: 25px" alt="Avatar" /> •
+          {{ loggedUser.firstName }} {{ loggedUser.lastName }} • {{ date.format('MMMM D, YYYY h:mm A') }}
+        </span>
+      </mat-card-title>
+      <mat-card-content id="create_post_textarea" fxLayout="column" fxLayoutAlign="end end">
+        <mat-form-field appearance="fill" style="width: 100%" class="rounded-3">
+          <mat-label>Title</mat-label>
+          <input type="text" placeholder="Lorem Ipsum dolor...." matInput [formControl]="newTitle" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 100%" class="rounded-3">
+          <mat-label>Content</mat-label>
+          <textarea type="text" matInput [formControl]="newContent"></textarea>
+        </mat-form-field>
+        <button style="margin: 2px" mat-raised-button color="accent" (click)="createPost()">Send</button>
+      </mat-card-content>
+    </mat-card>
+    <div *ngIf="allPosts">
+      <div *ngFor="let post of allPosts | sortPosts">
+        <jhi-post [post]="post" [loggedUser]="loggedUser" (postId)="deletePost($event)"></jhi-post>
+      </div>
+    </div>
+  </div>
+</div>

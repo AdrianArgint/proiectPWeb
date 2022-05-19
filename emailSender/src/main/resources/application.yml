@@ -1,0 +1,19 @@
+spring:
+  rabbitmq:
+    host: host.docker.internal
+    port: 5672
+    username: admin
+    password: admin
+    queue: proiect_idp
+    exchange: proiect_idp.exchange
+    routingkey: proiect_idp.rk
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: bogdan.petrusca218@gmail.com
+    password: qqbxybjmlwklunde
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+    templates:
+      path: templates

@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="postComment">
+      <h2 data-cy="postCommentDetailsHeading"><span>Post Comment</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ postComment.id }}</span>
+        </dd>
+        <dt><span>Content</span></dt>
+        <dd>
+          <span>{{ postComment.content }}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+          <span>{{ postComment.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Last Updated Date</span></dt>
+        <dd>
+          <span>{{ postComment.lastUpdatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Post</span></dt>
+        <dd>
+          <div *ngIf="postComment.post">
+            <a [routerLink]="['/post', postComment.post?.id, 'view']">{{ postComment.post?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Author</span></dt>
+        <dd>
+          <span>{{ postComment.author?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/post-comment', postComment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

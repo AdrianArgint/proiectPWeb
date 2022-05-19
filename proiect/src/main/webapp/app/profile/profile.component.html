@@ -1,0 +1,99 @@
+<div class="container" *ngIf="account && user">
+  <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <span *ngIf="account?.imageUrl">
+          <img [src]="account!.imageUrl" class="profile-image rounded-circle" alt="Avatar" />
+        </span>
+        <div class="ml-2 d-flex align-items-center">
+          <div>
+            <div class="d-flex">
+              <h4 *ngIf="user?.firstName" class="font-weight-bold">
+                {{ user?.firstName }}
+              </h4>
+              <h4 *ngIf="user?.lastName" class="font-weight-bold ml-1">
+                {{ user?.lastName }}
+              </h4>
+            </div>
+            <h6 *ngIf="user.email">
+              {{ user.email }}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          class="btn btn-primary ml-2"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="myProfileForm">
+      <jhi-alert-error></jhi-alert-error>
+      <div class="row">
+        <div class="form-group col">
+          <label class="form-control-label" for="field_firstName">Prenume</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+        </div>
+
+        <div class="form-group col">
+          <label class="form-control-label" for="field_lastName">Nume de familie</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+        </div>
+      </div>
+      <hr />
+      <div class="form-group mt-4 mb-6">
+        <label class="form-control-label" for="field_email">Email</label>
+        <input
+          [attr.disabled]="true"
+          type="text"
+          class="form-control"
+          name="email"
+          id="field_email"
+          data-cy="email"
+          formControlName="email"
+        />
+      </div>
+      <div class="form-group mt-4 mb-6 d-flex flex-column">
+        <label class="form-control-label" for="field_place">Check in place</label>
+        <a
+          id="field_place"
+          *ngIf="user.place"
+          href="https://www.google.com/maps?q={{ user.place.latitude }},{{ user.place.longitude }}"
+          target="_blank"
+          >{{ user.place.name }}</a
+        >
+        <div class="align-self-center map">
+          <agm-map
+            *ngIf="user.place"
+            [latitude]="user.place.latitude!"
+            [longitude]="user.place.longitude!"
+            [zoom]="10"
+            style="width: 90%; height: 50vh"
+          >
+            <agm-marker [latitude]="user.place!.latitude!" [longitude]="user.place!.longitude!">
+              <agm-info-window [maxWidth]="200">
+                {{ user.place.name }}
+                <hr />
+                {{ user.place.type }}
+                <hr />
+              </agm-info-window>
+            </agm-marker>
+          </agm-map>
+        </div>
+        <p *ngIf="!user.place">You have not checked-in yet!</p>
+      </div>
+    </div>
+  </form>
+</div>
+<p-toast></p-toast>

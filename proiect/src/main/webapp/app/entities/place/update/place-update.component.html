@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-place-heading" data-cy="PlaceCreateUpdateHeading">Create or edit a Place</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="true">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+        </div>
+
+        <div class="form-group" [hidden]="true">
+          <label class="form-control-label" for="field_latitude">Latitude</label>
+          <input type="number" class="form-control" name="latitude" id="field_latitude" data-cy="latitude" formControlName="latitude" />
+        </div>
+
+        <div class="form-group" [hidden]="true">
+          <label class="form-control-label" for="field_longitude">Longitude</label>
+          <input type="number" class="form-control" name="longitude" id="field_longitude" data-cy="longitude" formControlName="longitude" />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            ngx-google-places-autocomplete
+            class="form-control"
+            value="{{ this.editForm.get(['addressForm'])!.value ? this.editForm.get(['addressForm'])!.value.name : undefined }}"
+            formControlName="addressForm"
+            id="address"
+            [ngClass]="{ errorForm: this.editForm.get(['address'])!.value === '' }"
+            (onAddressChange)="onAddressChange($event)"
+          />
+          <!--          </mat-form-field>-->
+        </div>
+
+        <div class="form-group typeSelect">
+          <mat-form-field class="typeSelect" appearance="fill" [ngClass]="{ errorForm: this.editForm.get(['type'])!.value === '' }">
+            <mat-label>Place type</mat-label>
+            <mat-select [(value)]="placeTypeForm">
+              <mat-option *ngFor="let placeType of placeTypes" [value]="placeType">
+                {{ placeType }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="typeSelect" appearance="fill">
+            <mat-label class="form-control-label" for="field_description">Description</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              name="description"
+              id="field_description"
+              data-cy="description"
+              formControlName="description"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

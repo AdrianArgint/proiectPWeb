@@ -1,4 +1,4 @@
-# Sample global config for monitoring JHipster applications
+# Sample global config for monitoring applications
 global:
   scrape_interval: 15s
   evaluation_interval: 15s

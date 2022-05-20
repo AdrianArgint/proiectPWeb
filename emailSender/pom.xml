@@ -107,7 +107,7 @@
 							</ports>
 							<environment>
 								<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-								<JHIPSTER_SLEEP>0</JHIPSTER_SLEEP>
+								<SLEEP>0</SLEEP>
 							</environment>
 							<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
 							<user>1000</user>

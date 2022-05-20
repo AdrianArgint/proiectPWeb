@@ -46,6 +46,6 @@ export class PlaceDetailComponent implements OnInit {
           return '';
         }
       })
-      .join(' ');
+      .join(', ');
   }
 }

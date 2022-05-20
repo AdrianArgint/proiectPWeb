@@ -47,7 +47,18 @@ public class UserDTO {
         this.place = place;
     }
 
-    public UserDTO(User user) {}
+    public UserDTO(User user) {
+        this.id = user.getId();
+        // Customize it here if you need, or not, firstName/lastName/etc
+        this.login = user.getLogin();
+
+        this.firstName = user.getFirstName();
+
+        this.lastName = user.getLastName();
+
+        this.imageUrl = user.getImageUrl();
+        this.email = user.getEmail();
+    }
 
     public PlaceDTO getPlace() {
         return place;

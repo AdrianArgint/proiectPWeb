@@ -1,4 +1,4 @@
-# proiectPWeb
+# Proiect PWeb + IDP
 
 In acest repo se afla 2 proiecte. 
 

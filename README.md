@@ -12,3 +12,5 @@ adaugat in pom.xml si care in momentul compilarii backendul va instala si node_m
 
 In al doilea proiect se afla un proiect spring care primeste mesaje de la coada si va trimite emailuri catre persoane. Pentru a putea rula trebuia date aceleasi
 comenzi ca mai sus.
+
+Link catre Figma: https://www.figma.com/file/FTcsDzVIg7jSEXjl7a1tCl/Pweb?node-id=0%3A1

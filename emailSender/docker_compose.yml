@@ -5,5 +5,7 @@ services:
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+    volumes:
+      - ./logs/spring.log:/logs/spring.log
     ports:
       - 8081:8080
